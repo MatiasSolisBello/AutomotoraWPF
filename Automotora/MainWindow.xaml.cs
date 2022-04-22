@@ -58,32 +58,144 @@ namespace Automotora
                 transmission = Transmissions.Mecanica;
             }
 
-            // crear instancia
-            Car car = new Car();
-            car.LicencePlate = licencePlate;
-            car.Brand = brand;
-            car.Model = model;
-            car.Year = year;
-            car.New = cnew;
-            car.Transmissions = transmission;
-
-
-            if (_collection.SaveCar(car))
+            
+            try
             {
-                MessageBox.Show("Guardado correctamente");
-            }
-            else
-            {
-                MessageBox.Show("La patente ya existe");
-            }
+                // crear instancia
+                Car car = new Car();
+                car.LicencePlate = licencePlate;
+                car.Brand = brand;
+                car.Model = model;
+                car.Year = year;
+                car.New = cnew;
+                car.Transmissions = transmission;
 
-            LoadTable();
+
+                if (_collection.SaveCar(car))
+                {
+                    MessageBox.Show("Guardado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("La patente ya existe");
+                }
+
+                LoadTable();
+            }
+            catch(ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void LoadTable()
         {
             dgCar.ItemsSource = null;
-            dgCar.ItemsSource = _collection.car;
+            dgCar.ItemsSource = _collection.cars;
+        }
+
+        // Programar boton buscar
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string licencePlate = txtLicencePlate.Text;
+
+            if (licencePlate.Trim() == "")
+            {
+                MessageBox.Show("Debes ingresar una patente");
+                return;
+            }
+
+            Car car = _collection.SearchCar(licencePlate);
+            if (car == null)
+            {
+                MessageBox.Show("No se ha encontrado la patente");
+                return;
+            }
+
+            cboBrand.SelectedIndex = (int)car.Brand;
+            txtModel.Text = car.Model;
+            txtYear.Text = car.Year.ToString();
+            chkNew.IsChecked = car.New;
+
+            if(car.Transmissions == Transmissions.Automatica)
+            {
+                rbtOption2.IsChecked = true;
+            }
+            else
+            {
+                rbtOption1.IsChecked = true;
+            }
+        }
+
+        // Programar boton Eliminar
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            string licencePlate = txtLicencePlate.Text;
+            if(licencePlate.Trim() == "")
+            {
+                MessageBox.Show("Debes ingresar una patente");
+                return;
+            }
+
+            if (_collection.DeleteCar(licencePlate))
+            {
+                MessageBox.Show("Eliminado correctamente");
+                LoadTable();
+            }
+            else
+            {
+                MessageBox.Show("No se ha encontrado la patente");
+            }
+        }
+
+        // Programar boton Actualizar
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            // recolect data
+            string licencePlate = txtLicencePlate.Text;
+            Brand brand = (Brand)cboBrand.SelectedIndex;
+            string model = txtModel.Text;
+            int year = 0;
+            if (int.TryParse(txtYear.Text, out year) == false)
+            {
+                MessageBox.Show("El año debe ser numerico", "Error");
+                return;
+            }
+            bool cnew = chkNew.IsChecked.Value;
+            Transmissions transmission = Transmissions.Automatica;
+            if (rbtOption1.IsChecked == true)
+            {
+                transmission = Transmissions.Mecanica;
+            }
+
+
+            try
+            {
+                // crear instancia
+                Car car = _collection.SearchCar(licencePlate);
+
+                if(car == null)
+                {
+                    MessageBox.Show("No se ha encontrado la patente");
+                    return;
+                }
+
+                car.LicencePlate = licencePlate;
+                car.Brand = brand;
+                car.Model = model;
+                car.Year = year;
+                car.New = cnew;
+                car.Transmissions = transmission;
+
+                MessageBox.Show("Modificado correctamente");
+
+                LoadTable();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

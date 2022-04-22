@@ -12,20 +12,20 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="lblLicencePlate" Content="Patente" HorizontalAlignment="Left" Margin="59,66,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtLicencePlate" HorizontalAlignment="Left" Margin="128,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22"/>
-        <Label x:Name="lblModel" Content="Modelo" HorizontalAlignment="Left" Margin="59,115,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cboBrand" HorizontalAlignment="Left" Margin="128,159,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="lblBrand" Content="Marca" HorizontalAlignment="Left" Margin="59,155,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtModel" HorizontalAlignment="Left" Margin="128,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.217,0.448"/>
+        <Label x:Name="lblModel" Content="Modelo" HorizontalAlignment="Left" Margin="59,148,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cboBrand" HorizontalAlignment="Left" Margin="128,112,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+        <Label x:Name="lblBrand" Content="Marca" HorizontalAlignment="Left" Margin="59,108,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtModel" HorizontalAlignment="Left" Margin="128,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.217,0.448" Height="22"/>
         <Label x:Name="lblYear" Content="Año" HorizontalAlignment="Left" Margin="59,191,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Margin="128,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Margin="128,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22"/>
         <CheckBox x:Name="chkNew" Content="¿Es nuevo?" HorizontalAlignment="Left" Margin="128,235,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTransmission" Content="Transmisión" HorizontalAlignment="Left" Margin="59,261,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="rbtOption1" Content="Mecanica" HorizontalAlignment="Left" Margin="154,267,0,0" VerticalAlignment="Top" GroupName="transmission"/>
         <RadioButton x:Name="rbtOption2" Content="Automatica" HorizontalAlignment="Left" Margin="154,287,0,0" VerticalAlignment="Top" GroupName="transmission"/>
-        <DataGrid x:Name="dgCar" Margin="391,55,19,121"/>
-        <Button x:Name="btnSearch" Content="Buscar" HorizontalAlignment="Left" Margin="257,69,0,0" VerticalAlignment="Top" Height="22" Width="57"/>
-        <Button x:Name="btnDelete" Content="Eliminar" HorizontalAlignment="Left" Margin="59,329,0,0" VerticalAlignment="Top" Height="30" Width="56"/>
-        <Button x:Name="btnUpdate" Content="Modificar" HorizontalAlignment="Left" Margin="138,329,0,0" VerticalAlignment="Top" Height="30" Width="68"/>
+        <DataGrid x:Name="dgCar" Margin="391,55,19,121" IsReadOnly="True"/>
+        <Button x:Name="btnSearch" Content="Buscar" HorizontalAlignment="Left" Margin="257,69,0,0" VerticalAlignment="Top" Height="22" Width="57" Click="btnSearch_Click"/>
+        <Button x:Name="btnDelete" Content="Eliminar" HorizontalAlignment="Left" Margin="142,329,0,0" VerticalAlignment="Top" Height="30" Width="67" Click="btnDelete_Click"/>
+        <Button x:Name="btnUpdate" Content="Modificar" HorizontalAlignment="Left" Margin="59,329,0,0" VerticalAlignment="Top" Height="30" Width="67" Click="btnUpdate_Click"/>
         <Button x:Name="btnSave" Content="Guardar" HorizontalAlignment="Left" Margin="228,329,0,0" VerticalAlignment="Top" Height="30" Width="67" Click="btnSave_Click"/>
         <Label x:Name="txtAuthor" Content="Matías Solis Bello - Abril 2022" HorizontalAlignment="Left" Margin="614,376,0,0" VerticalAlignment="Top"/>
 

@@ -37,14 +37,28 @@ namespace AutomotoraLibrary
         public int Year
         {
             get { return _year; }
-            set { _year = value; }
+            set { 
+                //validar si año es menor a 1950
+                if(value < 1950)
+                {
+                    throw new ArgumentException("El año debe ser como minimo 1950");
+                }
+                _year = value; 
+            }
         }
 
 
         public string Model
         {
             get { return _model; }
-            set { _model = value; }
+            set {
+                //validar que el minimo de largo sea 3
+                if (value.Length < 3)
+                {
+                    throw new ArgumentException("El modelo debe tener al menos 3 caracteres");
+                }
+                _model = value; 
+            }
         }
 
 

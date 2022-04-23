@@ -22,12 +22,13 @@
         <Label x:Name="lblTransmission" Content="Transmisión" HorizontalAlignment="Left" Margin="59,261,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="rbtOption1" Content="Mecanica" HorizontalAlignment="Left" Margin="154,267,0,0" VerticalAlignment="Top" GroupName="transmission"/>
         <RadioButton x:Name="rbtOption2" Content="Automatica" HorizontalAlignment="Left" Margin="154,287,0,0" VerticalAlignment="Top" GroupName="transmission"/>
-        <DataGrid x:Name="dgCar" Margin="391,55,19,121" IsReadOnly="True"/>
+        <DataGrid x:Name="dgCar" Margin="372,55,38,121" IsReadOnly="True"/>
         <Button x:Name="btnSearch" Content="Buscar" HorizontalAlignment="Left" Margin="257,69,0,0" VerticalAlignment="Top" Height="22" Width="57" Click="btnSearch_Click"/>
         <Button x:Name="btnDelete" Content="Eliminar" HorizontalAlignment="Left" Margin="142,329,0,0" VerticalAlignment="Top" Height="30" Width="67" Click="btnDelete_Click"/>
         <Button x:Name="btnUpdate" Content="Modificar" HorizontalAlignment="Left" Margin="59,329,0,0" VerticalAlignment="Top" Height="30" Width="67" Click="btnUpdate_Click"/>
         <Button x:Name="btnSave" Content="Guardar" HorizontalAlignment="Left" Margin="228,329,0,0" VerticalAlignment="Top" Height="30" Width="67" Click="btnSave_Click"/>
-        <Label x:Name="txtAuthor" Content="Matías Solis Bello - Abril 2022" HorizontalAlignment="Left" Margin="614,376,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="txtAuthor" Content="Matías Solis Bello - Abril 2022" HorizontalAlignment="Left" Margin="595,375,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnList" Content="Abrir Listado" HorizontalAlignment="Left" Margin="666,327,0,0" VerticalAlignment="Top" Width="96" Click="btnList_Click"/>
 
     </Grid>
 </Window>

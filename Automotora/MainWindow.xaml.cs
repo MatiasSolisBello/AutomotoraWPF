@@ -197,5 +197,11 @@ namespace Automotora
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnList_Click(object sender, RoutedEventArgs e)
+        {
+            ListCar list = new ListCar(this._collection);
+            list.Show();
+        }
     }
 }

@@ -49,5 +49,28 @@ namespace AutomotoraLibrary
             this.cars.Remove(car);
             return true;
         }
+
+        // Primer filtro
+        public List<Car> SearchByLicencePlate(string licencePlate)
+        {
+            List<Car> cars = (from a in this.cars
+
+                              //igual a Patente
+                              //where a.LicencePlate == licencePlate
+
+                              // si contiene parte de la patente
+                              where a.LicencePlate.ToLower().Contains(licencePlate)
+                              select a).ToList();
+            return cars;
+        }
+
+        // Segundo filtro
+        public List<Car> SearchByBrand(Brand brand)
+        {
+            List<Car> cars = (from a in this.cars
+                              where a.Brand == brand
+                              select a).ToList();
+            return cars;
+        }
     }
 }

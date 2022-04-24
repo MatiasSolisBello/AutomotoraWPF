@@ -16,7 +16,7 @@ namespace Automotora
     /// <summary>
     /// Lógica de interacción para ListCar.xaml
     /// </summary>
-    public partial class ListCar : Window
+    public partial class ListCar
     {
         private AutomotoraCollection _collection;
 
@@ -65,6 +65,12 @@ namespace Automotora
         {
             dgCars.ItemsSource = null;
             dgCars.ItemsSource = this.Collection.cars;
+        }
+
+        // Cerrar ventana
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

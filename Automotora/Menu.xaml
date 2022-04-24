@@ -1,0 +1,38 @@
+﻿<Controls:MetroWindow x:Class="Automotora.Menu"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Automotora"
+        mc:Ignorable="d"
+        Title="Menu" Height="450" Width="800" Background="#0369A1">
+    <Grid>
+        <Controls:Tile x:Name="TileCars" Width="150" Height="150" Background="#0EA5E9" Margin="45,39,600,233.5" Click="TileCars_Click">
+            <Grid Width="150" Height="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="76*"/>
+                    <ColumnDefinition Width="19*"/>
+                    <ColumnDefinition Width="48*"/>
+                </Grid.ColumnDefinitions>
+                <iconPacks:PackIconMaterial Kind="Car" Width="80" Height="80" VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="28,0,0,0" Grid.Column="1"/>
+                <Label x:Name="lblCar" Content="Gestión de Automoviles" Foreground="White" HorizontalAlignment="Left" Margin="7,124,0,0" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
+            </Grid>
+        </Controls:Tile>
+        <Controls:Tile x:Name="TileList" Width="150" Height="150" Background="#0EA5E9" Margin="218,39,427,233.5" Click="TileList_Click">
+            <Grid Width="150" Height="150">
+                <iconPacks:PackIconMaterial Kind="ClipboardListOutline" Width="80" Height="80" HorizontalAlignment="Center" VerticalAlignment="Center"></iconPacks:PackIconMaterial>
+                <Label x:Name="lblList" Content="Estado de Automoviles" Foreground="White" HorizontalAlignment="Center" Margin="0,124,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+            </Grid>
+        </Controls:Tile>
+        <Controls:Tile x:Name="TileExit" Width="150" Height="150" Background="#0EA5E9" Margin="616,246,29,26.5" Click="TileExit_Click">
+            <Grid Width="150" Height="150">
+                <iconPacks:PackIconMaterial Kind="ExitToApp" Width="80" Height="80" HorizontalAlignment="Center" VerticalAlignment="Center"></iconPacks:PackIconMaterial>
+                <Label x:Name="lblExit" Content="Salir" Foreground="White" HorizontalAlignment="Center" Margin="0,124,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+            </Grid>
+        </Controls:Tile>
+
+    </Grid>
+</Controls:MetroWindow>

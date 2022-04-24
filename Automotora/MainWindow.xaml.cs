@@ -19,12 +19,23 @@ namespace Automotora
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         // Inicializa Coleccion
         private AutomotoraCollection _collection = new AutomotoraCollection();
         public MainWindow()
         {
+            InitializeComponent();
+
+            // Carga combobox con datos de Enum Brand y por defecto es 0
+            cboBrand.ItemsSource = Enum.GetValues(typeof(Brand));
+            cboBrand.SelectedIndex = 0;
+        }
+
+        // Llevar los datos de menu -> listado
+        public MainWindow(AutomotoraCollection collection)
+        {
+            this._collection = collection;
             InitializeComponent();
 
             // Carga combobox con datos de Enum Brand y por defecto es 0

@@ -13,11 +13,25 @@ namespace AutomotoraLibrary
         private string _model;
         private int _year;
         private bool _new;
+        private DateTime _date;
         private Transmissions _transmissions;
 
         public Car()
         {
 
+        }
+
+        public DateTime Date
+        {
+            get { return _date; }
+            set
+            {
+                if (value > DateTime.Now)
+                {
+                    throw new ArgumentException("La fecha de fabricacion debe ser menor o igual a hoy");
+                }
+                _date = value;
+            }
         }
 
         public Transmissions Transmissions

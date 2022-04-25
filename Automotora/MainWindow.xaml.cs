@@ -69,7 +69,15 @@ namespace Automotora
                 transmission = Transmissions.Mecanica;
             }
 
-            
+            if (dtpDate.SelectedDate == null)
+            {
+                MessageBox.Show("Debes seleccionar una fecha de fabricacion");
+                return;
+            }
+
+            DateTime date = dtpDate.SelectedDate.Value;
+
+
             try
             {
                 // crear instancia
@@ -79,7 +87,9 @@ namespace Automotora
                 car.Model = model;
                 car.Year = year;
                 car.New = cnew;
+                car.Date = date;
                 car.Transmissions = transmission;
+
 
 
                 if (_collection.SaveCar(car))
@@ -128,8 +138,9 @@ namespace Automotora
             txtModel.Text = car.Model;
             txtYear.Text = car.Year.ToString();
             chkNew.IsChecked = car.New;
+            dtpDate.SelectedDate = car.Date;
 
-            if(car.Transmissions == Transmissions.Automatica)
+            if (car.Transmissions == Transmissions.Automatica)
             {
                 rbtOption2.IsChecked = true;
             }

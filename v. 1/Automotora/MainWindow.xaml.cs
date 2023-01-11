@@ -103,11 +103,11 @@ namespace Automotora
 
                 LoadTable();
             }
-            catch(ArgumentException ex)
+            catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         private void LoadTable()
@@ -154,7 +154,7 @@ namespace Automotora
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             string licencePlate = txtLicencePlate.Text;
-            if(licencePlate.Trim() == "")
+            if (licencePlate.Trim() == "")
             {
                 MessageBox.Show("Debes ingresar una patente");
                 return;
@@ -197,7 +197,7 @@ namespace Automotora
                 // crear instancia
                 Car car = _collection.SearchCar(licencePlate);
 
-                if(car == null)
+                if (car == null)
                 {
                     MessageBox.Show("No se ha encontrado la patente");
                     return;

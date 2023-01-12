@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AutomotoraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LicencePlate" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="DateFabrication" Type="datetime" Nullable="false" />
+          <Property Name="New" Type="bit" Nullable="false" />
+          <Property Name="Transmissions" Type="bit" Nullable="false" />
+          <Property Name="ModelId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Cars__ModelId__1920BF5C">
+          <End Role="Models" Type="Self.Models" Multiplicity="1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Models__BrandId__182C9B23">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
+          <End Role="Models" Type="Self.Models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutomotoraModelStoreContainer">
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Models" EntityType="Self.Models" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cars__ModelId__1920BF5C" Association="Self.FK__Cars__ModelId__1920BF5C">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Models__BrandId__182C9B23" Association="Self.FK__Models__BrandId__182C9B23">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutomotoraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Models" Relationship="Self.FK__Models__BrandId__182C9B23" FromRole="Brands" ToRole="Models" />
+        </EntityType>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LicencePlate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="DateFabrication" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="New" Type="Boolean" Nullable="false" />
+          <Property Name="Transmissions" Type="Boolean" Nullable="false" />
+          <Property Name="ModelId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Models" Relationship="Self.FK__Cars__ModelId__1920BF5C" FromRole="Cars" ToRole="Models" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brands" Relationship="Self.FK__Models__BrandId__182C9B23" FromRole="Models" ToRole="Brands" />
+          <NavigationProperty Name="Cars" Relationship="Self.FK__Cars__ModelId__1920BF5C" FromRole="Models" ToRole="Cars" />
+        </EntityType>
+        <Association Name="FK__Models__BrandId__182C9B23">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
+          <End Role="Models" Type="Self.Models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cars__ModelId__1920BF5C">
+          <End Role="Models" Type="Self.Models" Multiplicity="1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutomotoraEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Brands" EntityType="Self.Brands" />
+          <EntitySet Name="Cars" EntityType="Self.Cars" />
+          <EntitySet Name="Models" EntityType="Self.Models" />
+          <AssociationSet Name="FK__Models__BrandId__182C9B23" Association="Self.FK__Models__BrandId__182C9B23">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cars__ModelId__1920BF5C" Association="Self.FK__Cars__ModelId__1920BF5C">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutomotoraModelStoreContainer" CdmEntityContainer="AutomotoraEntities">
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="AutomotoraModel.Brands">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="AutomotoraModel.Cars">
+              <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LicencePlate" ColumnName="LicencePlate" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="DateFabrication" ColumnName="DateFabrication" />
+                <ScalarProperty Name="New" ColumnName="New" />
+                <ScalarProperty Name="Transmissions" ColumnName="Transmissions" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="AutomotoraModel.Models">
+              <MappingFragment StoreEntitySet="Models">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

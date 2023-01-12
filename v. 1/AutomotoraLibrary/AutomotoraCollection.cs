@@ -10,6 +10,8 @@ namespace AutomotoraLibrary
     {
         public List<Car> cars = new List<Car>();
 
+        
+        // Guardar Carro
         public bool SaveCar(Car car)
         {   
             // validacion de existencia de patente
@@ -24,7 +26,9 @@ namespace AutomotoraLibrary
             this.cars.Add(car);
             return true;
         }
-        
+
+
+        // Buscar Carro
         public Car SearchCar(string licencePlate)
         {
             foreach(Car a in cars)
@@ -37,6 +41,8 @@ namespace AutomotoraLibrary
             return null;
         }
 
+
+        // Eliminar Carro
         public bool DeleteCar(string licencePlate)
         {
             Car car = this.SearchCar(licencePlate);
@@ -50,7 +56,8 @@ namespace AutomotoraLibrary
             return true;
         }
 
-        // Primer filtro
+
+        //  Primer filtro: Buscar por licencia
         public List<Car> SearchByLicencePlate(string licencePlate)
         {
             List<Car> cars = (from a in this.cars
@@ -64,7 +71,8 @@ namespace AutomotoraLibrary
             return cars;
         }
 
-        // Segundo filtro
+
+        // Segundo filtro: Buscar por marca
         public List<Car> SearchByBrand(Brand brand)
         {
             List<Car> cars = (from a in this.cars

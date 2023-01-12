@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data;
  
 namespace AutomotoraLibrary
 {
     public class AutomotoraCollection
     {
+
+        AutomotoraEntities db = new AutomotoraEntities();
+
+        public IEnumerable<Object> ListAll()
+        {
+            // EntityFramework c/ Linq
+            return db.Cars.ToList();
+        }
+
+
         public List<Car> cars = new List<Car>();
 
         public bool SaveCar(Car car)

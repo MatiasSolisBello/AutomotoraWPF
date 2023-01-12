@@ -35,7 +35,7 @@ namespace Automotora
         {
             this.Collection = collection;
             InitializeComponent();
-            dgCars.ItemsSource = this.Collection.cars;
+            dgCars.ItemsSource = this.Collection.ListAll();
 
             // Cargar marcas en comboBox de Filtro
             cboBrand.ItemsSource = Enum.GetValues(typeof(Brand));

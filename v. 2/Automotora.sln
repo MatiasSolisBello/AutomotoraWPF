@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomotoraLibrary", "Automo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automotora", "Automotora\Automotora.csproj", "{60A6D867-DDD9-4630-BA25-27232D687F49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{F5513197-7805-4F76-B504-D5E299B76A32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{60A6D867-DDD9-4630-BA25-27232D687F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60A6D867-DDD9-4630-BA25-27232D687F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60A6D867-DDD9-4630-BA25-27232D687F49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5513197-7805-4F76-B504-D5E299B76A32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5513197-7805-4F76-B504-D5E299B76A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5513197-7805-4F76-B504-D5E299B76A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5513197-7805-4F76-B504-D5E299B76A32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

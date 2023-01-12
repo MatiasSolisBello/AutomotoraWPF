@@ -50,6 +50,8 @@ namespace Automotora
             dgCars.ItemsSource = cars;
         }
 
+
+        // Boton filtrar
         private void btnFilter_Click(object sender, RoutedEventArgs e)
         {
             Brand brand = (Brand)cboBrand.SelectedIndex;
@@ -61,11 +63,14 @@ namespace Automotora
 
         }
 
+
+        // Boton Refrescar
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             dgCars.ItemsSource = null;
             dgCars.ItemsSource = this.Collection.cars;
         }
+
 
         // Cerrar ventana
         private void btnExit_Click(object sender, RoutedEventArgs e)

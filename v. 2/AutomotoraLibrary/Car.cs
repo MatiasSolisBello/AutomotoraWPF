@@ -8,6 +8,7 @@ namespace AutomotoraLibrary
 {
     public class Car
     {
+        private int _id;
         private string _licencePlate;
         private Brand _brand;
         private string _model;
@@ -15,6 +16,15 @@ namespace AutomotoraLibrary
         private bool _new;
         private DateTime _date;
         private Transmissions _transmissions;
+
+        private Model _models;
+
+        public Model Models
+        {
+            get { return _models; }
+            set { _models = value; }
+        }
+
 
         public Car()
         {
@@ -32,6 +42,12 @@ namespace AutomotoraLibrary
                 }
                 _date = value;
             }
+        }
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
         }
 
         public Transmissions Transmissions

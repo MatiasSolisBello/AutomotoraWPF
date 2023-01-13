@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutomotoraCollection.cs" />
+    <Compile Include="Brands.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Enum.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

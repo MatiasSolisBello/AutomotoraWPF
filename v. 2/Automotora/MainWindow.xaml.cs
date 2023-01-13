@@ -39,8 +39,11 @@ namespace Automotora
             InitializeComponent();
 
             // Carga combobox con datos de Enum Brand y por defecto es 0
-            cboBrand.ItemsSource = Enum.GetValues(typeof(Brand));
+            cboBrand.ItemsSource = collection.ListBrands();
             cboBrand.SelectedIndex = 0;
+
+            cboModel.ItemsSource = collection.ListModelsData();
+            cboModel.SelectedIndex = 0;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -48,7 +51,7 @@ namespace Automotora
             //recolectar data
             string licencePlate = txtLicencePlate.Text;
             Brand brand = (Brand)cboBrand.SelectedIndex;
-            string model = txtModel.Text;
+            //string model = txtModel.Text;
 
             //validacion de tipo de dato year
             int year = 0;
@@ -84,7 +87,7 @@ namespace Automotora
                 Car car = new Car();
                 car.LicencePlate = licencePlate;
                 car.Brand = brand;
-                car.Model = model;
+                //car.Model = model;
                 car.Year = year;
                 car.New = cnew;
                 car.Date = date;
@@ -135,7 +138,7 @@ namespace Automotora
             }
 
             cboBrand.SelectedIndex = (int)car.Brand;
-            txtModel.Text = car.Model;
+            //txtModel.Text = car.Model;
             txtYear.Text = car.Year.ToString();
             chkNew.IsChecked = car.New;
             dtpDate.SelectedDate = car.Date;
@@ -177,7 +180,7 @@ namespace Automotora
             // recolect data
             string licencePlate = txtLicencePlate.Text;
             Brand brand = (Brand)cboBrand.SelectedIndex;
-            string model = txtModel.Text;
+            //string model = txtModel.Text;
             int year = 0;
             if (int.TryParse(txtYear.Text, out year) == false)
             {
@@ -205,7 +208,7 @@ namespace Automotora
 
                 car.LicencePlate = licencePlate;
                 car.Brand = brand;
-                car.Model = model;
+                //car.Model = model;
                 car.Year = year;
                 car.New = cnew;
                 car.Transmissions = transmission;

@@ -12,6 +12,32 @@ namespace AutomotoraLibrary
 
         AutomotoraEntities db = new AutomotoraEntities();
 
+        // Listado de Marcas en combobox con sintaxis LINQ
+        public List<Brands> ListBrands()
+        {
+            List<Brands> brands = (from m in db.Brands
+                                   select new Brands
+                                   {
+                                       Id = m.Id,
+                                       Name = m.Name
+                                   }).ToList();
+
+            return brands;
+        }
+
+        // Listado de Modelos en combobox con sintaxis LINQ
+        public List<Model> ListModelsData()
+        {
+            List<Model> modelCar = (from m in db.Models
+                                    select new Model
+                                    {
+                                        Id = m.Id,
+                                        Name = m.Name
+                                    }).ToList();
+
+            return modelCar;
+        }
+
         public IEnumerable<Object> ListAll()
         {
             // EntityFramework c/ Linq

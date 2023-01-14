@@ -46,12 +46,17 @@ namespace Automotora
             cboModel.SelectedIndex = 0;
         }
 
+
+        // Boton Guardar
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             //recolectar data
             string licencePlate = txtLicencePlate.Text;
             Brand brand = (Brand)cboBrand.SelectedIndex;
-            //string model = txtModel.Text;
+            Model model = new Model()
+            {
+                Id = int.Parse(cboModel.SelectedValue.ToString())
+            };
 
             //validacion de tipo de dato year
             int year = 0;
@@ -87,7 +92,7 @@ namespace Automotora
                 Car car = new Car();
                 car.LicencePlate = licencePlate;
                 car.Brand = brand;
-                //car.Model = model;
+                car.Models = model;
                 car.Year = year;
                 car.New = cnew;
                 car.Date = date;
@@ -118,6 +123,7 @@ namespace Automotora
             dgCar.ItemsSource = null;
             dgCar.ItemsSource = _collection.cars;
         }
+
 
         // Programar boton buscar
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -180,7 +186,6 @@ namespace Automotora
             // recolect data
             string licencePlate = txtLicencePlate.Text;
             Brand brand = (Brand)cboBrand.SelectedIndex;
-            //string model = txtModel.Text;
             int year = 0;
             if (int.TryParse(txtYear.Text, out year) == false)
             {
@@ -194,6 +199,10 @@ namespace Automotora
                 transmission = Transmissions.Mecanica;
             }
 
+            Model model = new Model()
+            {
+                Id = int.Parse(cboModel.SelectedValue.ToString())
+            };
 
             try
             {
@@ -213,8 +222,14 @@ namespace Automotora
                 car.New = cnew;
                 car.Transmissions = transmission;
 
-                MessageBox.Show("Modificado correctamente");
-
+                if (_collection.UpdateCar(car))
+                {
+                    MessageBox.Show("Modificado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se ha podido modificar");
+                }
                 LoadTable();
             }
             catch (ArgumentException ex)

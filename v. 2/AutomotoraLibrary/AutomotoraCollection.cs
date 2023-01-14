@@ -47,43 +47,104 @@ namespace AutomotoraLibrary
 
         public List<Car> cars = new List<Car>();
 
+
+        // Guardar Automovil
         public bool SaveCar(Car car)
-        {   
+        {
             // validacion de existencia de patente
-            foreach (Car a in cars)
+            if (this.SearchCar(car.LicencePlate) != null)
             {
-                if (a.LicencePlate == car.LicencePlate)
-                {
-                    return false;
-                }
+                return false;
             }
 
-            this.cars.Add(car);
+            try
+            {
+                Data.Cars a = new Cars();
+                a.LicencePlate = car.LicencePlate;
+                a.Year = car.Year;
+                a.ModelId = car.Models.Id;
+                a.DateFabrication = car.Date;
+                a.New = car.New;
+                a.Transmissions = (Transmissions.Automatica == car.Transmissions) ? true : false;
+
+                db.Cars.Add(a);
+                db.SaveChanges();
+            }
+            catch(Exception)
+            {
+                return false;
+            }
             return true;
         }
         
-        public Car SearchCar(string licencePlate)
+
+        // Modificar Automovil
+        public bool UpdateCar(Car car)
         {
-            foreach(Car a in cars)
+            try
             {
-                if(a.LicencePlate == licencePlate)
+                Data.Cars a = (from at in db.Cars where at.LicencePlate == car.LicencePlate select at).FirstOrDefault();
+                if(a == null)
                 {
-                    return a;
+                    return false;
                 }
+                a.Year = car.Year;
+                a.ModelId = car.Models.Id;
+                a.DateFabrication = car.Date;
+                a.New = car.New;
+                a.Transmissions = (Transmissions.Automatica == car.Transmissions) ? true : false;
+
+                db.Entry(a).State = System.Data.EntityState.Modified;
+                db.SaveChanges();
             }
-            return null;
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
+        // Buscar Automovil
+        public Car SearchCar(string licencePlate)
+        {
+            Car car = (from a in db.Cars where a.LicencePlate == licencePlate select new Car {
+                Id = a.Id,
+                LicencePlate = a.LicencePlate,
+                Models = new Model()
+                {
+                    Id = a.Models.Id,
+                    Name = a.Models.Name
+                },
+                Year = a.Year,
+                Date = a.DateFabrication,
+                New = a.New,
+                Transmissions = (a.Transmissions == true)?Transmissions.Automatica:Transmissions.Mecanica
+        
+            }).FirstOrDefault();
+
+            return car;
+        }
+
+
+        // Eliminar Automovil
         public bool DeleteCar(string licencePlate)
         {
-            Car car = this.SearchCar(licencePlate);
+            Data.Cars car = (from a in db.Cars where a.LicencePlate == licencePlate select a).FirstOrDefault();
             
             if(car== null)
             {
                 return false;
             }
 
-            this.cars.Remove(car);
+            try
+            {
+                db.Cars.Remove(car);
+                db.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
             return true;
         }
 

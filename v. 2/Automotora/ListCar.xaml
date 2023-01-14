@@ -12,7 +12,18 @@
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="191*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgCars" IsReadOnly="True" Margin="1,139,39,48" Grid.Column="1"/>
+        <DataGrid x:Name="dgCars" IsReadOnly="True" Margin="1,139,39,48" Grid.Column="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding LicencePlate}" ClipboardContentBinding="{x:Null}" Header="Patente"/>
+                <DataGridTextColumn Binding="{Binding Models.Brands.Name}" ClipboardContentBinding="{x:Null}" Header="Marca"/>
+                <DataGridTextColumn Binding="{Binding Models.Name}" ClipboardContentBinding="{x:Null}" Header="Modelo"/>
+                <DataGridTextColumn Binding="{Binding Year}" ClipboardContentBinding="{x:Null}" Header="Año"/>
+                <DataGridTextColumn Binding="{Binding DateInText}" ClipboardContentBinding="{x:Null}" Header="Fabricacion"/>
+                <DataGridTextColumn Binding="{Binding isNewText}" ClipboardContentBinding="{x:Null}" Header="Nuevo"/>
+                <DataGridTextColumn Binding="{Binding Transmissions}" ClipboardContentBinding="{x:Null}" Header="Transmision"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
         <Label x:Name="lblLicencePlate" Content="Patente:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Height="26" Width="52"/>
         <TextBox x:Name="txtLicencePlate" Grid.Column="1" HorizontalAlignment="Left" Margin="84,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22" KeyUp="txtLicencePlate_KeyUp"/>
         <ComboBox x:Name="cboBrand" Grid.Column="1" HorizontalAlignment="Left" Margin="307,68,0,0" VerticalAlignment="Top" Width="120" Height="22"/>

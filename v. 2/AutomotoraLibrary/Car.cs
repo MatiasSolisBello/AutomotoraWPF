@@ -44,6 +44,14 @@ namespace AutomotoraLibrary
             }
         }
 
+        public string DateInText
+        {
+            get
+            {
+                return this._date.ToString("dd-MM-yyyy");
+            }
+        }
+
         public int Id
         {
             get { return _id; }
@@ -54,6 +62,18 @@ namespace AutomotoraLibrary
         {
             get { return _transmissions; }
             set { _transmissions = value; }
+        }
+
+        public string isNewText
+        {
+            get
+            {
+                if(_new == true)
+                {
+                    return "Si";
+                }
+                return "No";
+            }
         }
 
 

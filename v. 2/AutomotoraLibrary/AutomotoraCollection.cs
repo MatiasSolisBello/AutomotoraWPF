@@ -38,10 +38,29 @@ namespace AutomotoraLibrary
             return modelCar;
         }
 
-        public IEnumerable<Object> ListAll()
+        public List<Car> ListAll()
         {
-            // EntityFramework c/ Linq
-            return db.Cars.ToList();
+            return (from a in db.Cars
+                    select new Car
+                    {
+                        Id = a.Id,
+                        LicencePlate = a.LicencePlate,
+                        Year = a.Year,
+                        Date = a.DateFabrication,
+                        New = a.New,
+                        Transmissions = (a.Transmissions==true)?Transmissions.Automatica:Transmissions.Mecanica,
+                        Models = new Model
+                        {
+                            Id = a.Models.Id,
+                            Name = a.Models.Name,
+                            Brands = new Brands
+                            {
+                                Id = a.Models.Brands.Id,
+                                Name = a.Models.Brands.Name,
+                            }
+                            
+                        }
+                    }).ToList();
         }
 
 

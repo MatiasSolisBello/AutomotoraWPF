@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutomotoraLibrary
 {
-    public class Brands
+    public class Brand
     {
         private int _id;
         private string _name;

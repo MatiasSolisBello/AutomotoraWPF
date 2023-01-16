@@ -28,8 +28,8 @@ namespace Automotora
             InitializeComponent();
 
             // Carga combobox con datos de Enum Brand y por defecto es 0
-            cboBrand.ItemsSource = Enum.GetValues(typeof(Brand));
-            cboBrand.SelectedIndex = 0;
+            //cboBrand.ItemsSource = Enum.GetValues(typeof(Brands));
+            //cboBrand.SelectedIndex = 0;
         }
 
         // Llevar los datos de menu -> listado
@@ -38,12 +38,12 @@ namespace Automotora
             this._collection = collection;
             InitializeComponent();
 
-            // Carga combobox con datos de Enum Brand y por defecto es 0
+            // Carga combobox con datos de Brand y por defecto es 0
             cboBrand.ItemsSource = collection.ListBrands();
             cboBrand.SelectedIndex = 0;
 
-            cboModel.ItemsSource = collection.ListModelsData();
-            cboModel.SelectedIndex = 0;
+            //cboModel.ItemsSource = collection.ListModelsData();
+            //cboModel.SelectedIndex = 0;
         }
 
 
@@ -52,7 +52,12 @@ namespace Automotora
         {
             //recolectar data
             string licencePlate = txtLicencePlate.Text;
-            Brand brand = (Brand)cboBrand.SelectedIndex;
+            //Brand brand = (Brand)cboBrand.SelectedIndex;
+            Brand brand = new Brand()
+            {
+                Id = int.Parse(cboBrand.SelectedValue.ToString())
+            };
+
             Model model = new Model()
             {
                 Id = int.Parse(cboModel.SelectedValue.ToString())
@@ -143,8 +148,11 @@ namespace Automotora
                 return;
             }
 
-            cboBrand.SelectedIndex = (int)car.Brand;
-            //txtModel.Text = car.Model;
+            cboBrand.SelectedValue = car.Models.Brand.Id;
+
+            cboModel.ItemsSource = _collection.ListModelsByBrand(car.Models.Brand.Id);
+            cboModel.SelectedValue = car.Models.Id;
+
             txtYear.Text = car.Year.ToString();
             chkNew.IsChecked = car.New;
             dtpDate.SelectedDate = car.Date;
@@ -185,7 +193,12 @@ namespace Automotora
         {
             // recolect data
             string licencePlate = txtLicencePlate.Text;
-            Brand brand = (Brand)cboBrand.SelectedIndex;
+
+            //Brand brand = (Brands)cboBrand.SelectedIndex; 
+            Brand brand = new Brand()
+            {
+                Id = int.Parse(cboBrand.SelectedValue.ToString())
+            };
             int year = 0;
             if (int.TryParse(txtYear.Text, out year) == false)
             {
@@ -216,8 +229,8 @@ namespace Automotora
                 }
 
                 car.LicencePlate = licencePlate;
+                car.Models = model;
                 car.Brand = brand;
-                //car.Model = model;
                 car.Year = year;
                 car.New = cnew;
                 car.Transmissions = transmission;
@@ -242,6 +255,19 @@ namespace Automotora
         {
             ListCar list = new ListCar(this._collection);
             list.Show();
+        }
+
+        private void CboBrand_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // ¿Existe una opcion seleccionada?
+            if(cboBrand.SelectedValue != null)
+            {
+                int brandId = int.Parse(cboBrand.SelectedValue.ToString());
+
+                cboModel.ItemsSource = _collection.ListModelsByBrand(brandId);
+                cboModel.SelectedIndex = 0;
+                cboModel.IsEnabled = true;
+            }
         }
     }
 }

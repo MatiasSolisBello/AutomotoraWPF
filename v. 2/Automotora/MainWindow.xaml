@@ -14,7 +14,7 @@
         <Label x:Name="lblLicencePlate" Content="Patente" HorizontalAlignment="Left" Margin="60,33,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtLicencePlate" HorizontalAlignment="Left" Margin="128,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Height="22"/>
         <Label x:Name="lblModel" Content="Modelo" HorizontalAlignment="Left" Margin="59,119,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cboBrand" DisplayMemberPath="Name" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="128,75,0,0" VerticalAlignment="Top" Width="151" Height="22"/>
+        <ComboBox x:Name="cboBrand" DisplayMemberPath="Name" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="128,75,0,0" VerticalAlignment="Top" Width="151" Height="22" SelectionChanged="CboBrand_SelectionChanged"/>
         <Label x:Name="lblBrand" Content="Marca" HorizontalAlignment="Left" Margin="60,75,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblYear" Content="Año" HorizontalAlignment="Left" Margin="60,158,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtYear" HorizontalAlignment="Left" Margin="128,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Height="22"/>
@@ -31,7 +31,7 @@
         <Button x:Name="btnList" Content="Abrir Listado" HorizontalAlignment="Left" Margin="666,327,0,0" VerticalAlignment="Top" Width="96" Click="btnList_Click"/>
         <Label x:Name="lblDate" Content="Fecha" HorizontalAlignment="Left" Margin="59,194,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="dtpDate" SelectedDateFormat="Short" HorizontalAlignment="Left" Margin="128,194,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cboModel" DisplayMemberPath="Name" SelectedValuePath="Id"  HorizontalAlignment="Left" Margin="129,120,0,0" VerticalAlignment="Top" Width="151" Height="22"/>
+        <ComboBox x:Name="cboModel" IsEnabled="False" DisplayMemberPath="Name" SelectedValuePath="Id"  HorizontalAlignment="Left" Margin="129,120,0,0" VerticalAlignment="Top" Width="151" Height="22"/>
 
     </Grid>
 </Controls:MetroWindow>

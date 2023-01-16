@@ -38,7 +38,7 @@ namespace Automotora
             dgCars.ItemsSource = this.Collection.ListAll();
 
             // Cargar marcas en comboBox de Filtro
-            cboBrand.ItemsSource = Enum.GetValues(typeof(Brand));
+            cboBrand.ItemsSource = collection.ListBrands();
         }
 
         private void txtLicencePlate_KeyUp(object sender, KeyEventArgs e)
@@ -52,9 +52,9 @@ namespace Automotora
 
         private void btnFilter_Click(object sender, RoutedEventArgs e)
         {
-            Brand brand = (Brand)cboBrand.SelectedIndex;
+            int brandId = int.Parse(cboBrand.SelectedValue.ToString());
 
-            List<Car> cars = this.Collection.SearchByBrand(brand);
+            List<Car> cars = this.Collection.SearchByBrand(brandId);
 
             dgCars.ItemsSource = null;
             dgCars.ItemsSource = cars;

@@ -13,10 +13,10 @@ namespace AutomotoraLibrary
         AutomotoraEntities db = new AutomotoraEntities();
 
         // Listado de Marcas en combobox con sintaxis LINQ
-        public List<Brands> ListBrands()
+        public List<Brand> ListBrands()
         {
-            List<Brands> brands = (from m in db.Brands
-                                   select new Brands
+            List<Brand> brands = (from m in db.Brands
+                                   select new Brand
                                    {
                                        Id = m.Id,
                                        Name = m.Name
@@ -38,6 +38,19 @@ namespace AutomotoraLibrary
             return modelCar;
         }
 
+
+        public List<Model> ListModelsByBrand(int brandId)
+        {
+            return (from m in db.Models
+                    where m.BrandId == brandId
+                    select new Model
+                    {
+                        Id = m.Id,
+                        Name = m.Name
+                    }).ToList();
+        }
+
+        // Listado para personalizacion de grilla
         public List<Car> ListAll()
         {
             return (from a in db.Cars
@@ -53,7 +66,7 @@ namespace AutomotoraLibrary
                         {
                             Id = a.Models.Id,
                             Name = a.Models.Name,
-                            Brands = new Brands
+                            Brand = new Brand
                             {
                                 Id = a.Models.Brands.Id,
                                 Name = a.Models.Brands.Name,
@@ -132,7 +145,12 @@ namespace AutomotoraLibrary
                 Models = new Model()
                 {
                     Id = a.Models.Id,
-                    Name = a.Models.Name
+                    Name = a.Models.Name,
+                    Brand = new Brand
+                    {
+                        Id = a.Models.Brands.Id,
+                        Name = a.Models.Brands.Name,
+                    }
                 },
                 Year = a.Year,
                 Date = a.DateFabrication,
@@ -170,23 +188,60 @@ namespace AutomotoraLibrary
         // Primer filtro
         public List<Car> SearchByLicencePlate(string licencePlate)
         {
-            List<Car> cars = (from a in this.cars
+            List<Car> cars = (
+                from a in db.Cars
+                where a.LicencePlate.ToLower().Contains(licencePlate)
+                select new Car
+                {
+                    Id = a.Id,
+                    LicencePlate = a.LicencePlate,
+                    Year = a.Year,
+                    Date = a.DateFabrication,
+                    New = a.New,
+                    Transmissions = (a.Transmissions == true) ? Transmissions.Automatica : Transmissions.Mecanica,
+                    Models = new Model
+                    {
+                        Id = a.Models.Id,
+                        Name = a.Models.Name,
+                        Brand = new Brand
+                        {
+                            Id = a.Models.Brands.Id,
+                            Name = a.Models.Brands.Name,
+                        }
 
-                              //igual a Patente
-                              //where a.LicencePlate == licencePlate
+                    }
+                }).ToList();
 
-                              // si contiene parte de la patente
-                              where a.LicencePlate.ToLower().Contains(licencePlate)
-                              select a).ToList();
             return cars;
         }
 
         // Segundo filtro
-        public List<Car> SearchByBrand(Brand brand)
+        public List<Car> SearchByBrand(int brandId)
         {
-            List<Car> cars = (from a in this.cars
-                              where a.Brand == brand
-                              select a).ToList();
+            List<Car> cars = (
+                from a in db.Cars
+                where a.Models.BrandId == brandId
+                select new Car
+                {
+                    Id = a.Id,
+                    LicencePlate = a.LicencePlate,
+                    Year = a.Year,
+                    Date = a.DateFabrication,
+                    New = a.New,
+                    Transmissions = (a.Transmissions == true) ? Transmissions.Automatica : Transmissions.Mecanica,
+                    Models = new Model
+                    {
+                        Id = a.Models.Id,
+                        Name = a.Models.Name,
+                        Brand = new Brand
+                        {
+                            Id = a.Models.Brands.Id,
+                            Name = a.Models.Brands.Name,
+                        }
+
+                    }
+                }).ToList();
+
             return cars;
         }
     }

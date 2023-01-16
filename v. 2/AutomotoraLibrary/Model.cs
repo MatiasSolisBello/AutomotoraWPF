@@ -10,12 +10,12 @@ namespace AutomotoraLibrary
     {
         private int _id;
         private string _name;
-        private Brands _brands;
+        private Brand _brand;
 
-        public Brands Brands
+        public Brand Brand
         {
-            get { return _brands; }
-            set { _brands = value; }
+            get { return _brand; }
+            set { _brand = value; }
         }
 
 

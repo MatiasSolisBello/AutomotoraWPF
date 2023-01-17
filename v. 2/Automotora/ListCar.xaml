@@ -18,19 +18,18 @@
                 <DataGridTextColumn Binding="{Binding Models.Brand.Name}" ClipboardContentBinding="{x:Null}" Header="Marca"/>
                 <DataGridTextColumn Binding="{Binding Models.Name}" ClipboardContentBinding="{x:Null}" Header="Modelo"/>
                 <DataGridTextColumn Binding="{Binding Year}" ClipboardContentBinding="{x:Null}" Header="Año"/>
-                <DataGridTextColumn Binding="{Binding DateInText}" ClipboardContentBinding="{x:Null}" Header="Fabricacion"/>
+                <DataGridTextColumn Binding="{Binding DateInText}" ClipboardContentBinding="{x:Null}" Header="Fecha de Fabricación"/>
                 <DataGridTextColumn Binding="{Binding isNewText}" ClipboardContentBinding="{x:Null}" Header="Nuevo"/>
-                <DataGridTextColumn Binding="{Binding Transmissions}" ClipboardContentBinding="{x:Null}" Header="Transmision"/>
+                <DataGridTextColumn Binding="{Binding Transmissions}" ClipboardContentBinding="{x:Null}" Header="Tipo de Transmisión"/>
             </DataGrid.Columns>
 
         </DataGrid>
         <Label x:Name="lblLicencePlate" Content="Patente:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Height="26" Width="52"/>
-        <TextBox x:Name="txtLicencePlate" Grid.Column="1" HorizontalAlignment="Left" Margin="84,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22" KeyUp="txtLicencePlate_KeyUp"/>
-        <ComboBox x:Name="cboBrand" DisplayMemberPath="Name" SelectedValuePath="Id" Grid.Column="1" HorizontalAlignment="Left" Margin="307,68,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+        <TextBox x:Name="txtLicencePlate" Grid.Column="1" HorizontalAlignment="Left" Margin="82,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Height="22" KeyUp="txtLicencePlate_KeyUp"/>
+        <ComboBox x:Name="cboBrand" DisplayMemberPath="Name" SelectedValuePath="Id" Grid.Column="1" HorizontalAlignment="Left" Margin="313,64,0,0" VerticalAlignment="Top" Width="137" Height="22"/>
         <Label x:Name="lblBrand" Content="Marca:" Grid.Column="1" HorizontalAlignment="Left" Margin="257,64,0,0" VerticalAlignment="Top" Height="26" Width="45"/>
-        <Button x:Name="btnFilter" Content="Filtrar" Grid.Column="1" HorizontalAlignment="Left" Margin="438,68,0,0" VerticalAlignment="Top" Height="22" Width="58" Click="btnFilter_Click"/>
+        <Button x:Name="btnFilter" Content="Filtrar" Grid.Column="1" HorizontalAlignment="Left" Margin="490,64,0,0" VerticalAlignment="Top" Height="26" Width="76" Click="btnFilter_Click"/>
         <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="845,263,0,0" VerticalAlignment="Top" Width="0"/>
-        <Button x:Name="btnRefresh" Content="Refrescar" Grid.Column="1" HorizontalAlignment="Left" Margin="644,68,0,0" VerticalAlignment="Top" Height="22" Width="81" Click="btnRefresh_Click"/>
         <Button x:Name="btnExit" Content="Salir" Grid.Column="1" HorizontalAlignment="Left" Margin="644,368,0,0" VerticalAlignment="Top" Height="30" Width="81" Click="btnExit_Click"/>
 
     </Grid>

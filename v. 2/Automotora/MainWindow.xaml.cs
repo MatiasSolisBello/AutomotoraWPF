@@ -148,19 +148,12 @@ namespace Automotora
                     MessageBox.Show("La patente ya existe");
                 }
 
-                LoadTable();
             }
             catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-        }
-
-        private void LoadTable()
-        {
-            dgCar.ItemsSource = null;
-            dgCar.ItemsSource = _collection.cars;
         }
 
 
@@ -214,7 +207,6 @@ namespace Automotora
             if (_collection.DeleteCar(licencePlate))
             {
                 MessageBox.Show("Eliminado correctamente");
-                LoadTable();
                 NotificationCenter.Notify("car_changed");
             }
             else
@@ -279,7 +271,6 @@ namespace Automotora
                 {
                     MessageBox.Show("No se ha podido modificar");
                 }
-                LoadTable();
             }
             catch (ArgumentException ex)
             {

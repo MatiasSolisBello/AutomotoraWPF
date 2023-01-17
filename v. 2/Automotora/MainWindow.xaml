@@ -6,32 +6,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Automotora"
         mc:Ignorable="d"
-        Title="Automotora" Height="450" Width="800" Closing="MetroWindow_Closing">
-    <Grid>
+        Title="Automotora" Height="450" Width="576" Closing="MetroWindow_Closing">
+    <Grid Margin="0,0,3.333,-0.333">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="lblLicencePlate" Content="Patente" HorizontalAlignment="Left" Margin="60,33,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtLicencePlate" HorizontalAlignment="Left" Margin="128,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Height="22"/>
-        <Label x:Name="lblModel" Content="Modelo" HorizontalAlignment="Left" Margin="59,119,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cboBrand" DisplayMemberPath="Name" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="128,75,0,0" VerticalAlignment="Top" Width="151" Height="22" SelectionChanged="CboBrand_SelectionChanged"/>
-        <Label x:Name="lblBrand" Content="Marca" HorizontalAlignment="Left" Margin="60,75,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblYear" Content="Año" HorizontalAlignment="Left" Margin="60,158,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Margin="128,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Height="22"/>
-        <CheckBox x:Name="chkNew" Content="¿Es nuevo?" HorizontalAlignment="Left" Margin="128,232,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTransmission" Content="Transmisión" HorizontalAlignment="Left" Margin="59,260,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="rbtOption1" Content="Mecanica" HorizontalAlignment="Left" Margin="154,264,0,0" VerticalAlignment="Top" GroupName="transmission"/>
-        <RadioButton x:Name="rbtOption2" Content="Automatica" HorizontalAlignment="Left" Margin="247,264,0,0" VerticalAlignment="Top" GroupName="transmission"/>
-        <DataGrid x:Name="dgCar" Margin="372,29,38,147" IsReadOnly="True"/>
-        <Button x:Name="btnSearch" Content="Buscar" HorizontalAlignment="Left" Margin="284,34,0,0" VerticalAlignment="Top" Height="22" Width="57" Click="btnSearch_Click"/>
-        <Button x:Name="btnDelete" Content="Eliminar" HorizontalAlignment="Left" Margin="160,311,0,0" VerticalAlignment="Top" Height="30" Width="66" Click="btnDelete_Click"/>
-        <Button x:Name="btnUpdate" Content="Modificar" HorizontalAlignment="Left" Margin="76,311,0,0" VerticalAlignment="Top" Height="30" Width="68" Click="btnUpdate_Click"/>
-        <Button x:Name="btnSave" Content="Guardar" HorizontalAlignment="Left" Margin="246,311,0,0" VerticalAlignment="Top" Height="30" Width="66" Click="btnSave_Click"/>
-        <Label x:Name="txtAuthor" Content="Matías Solis Bello - Abril 2022" HorizontalAlignment="Left" Margin="595,375,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnList" Content="Abrir Listado" HorizontalAlignment="Left" Margin="666,327,0,0" VerticalAlignment="Top" Width="96" Click="btnList_Click"/>
-        <Label x:Name="lblDate" Content="Fecha" HorizontalAlignment="Left" Margin="59,194,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dtpDate" SelectedDateFormat="Short" HorizontalAlignment="Left" Margin="128,194,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cboModel" IsEnabled="False" DisplayMemberPath="Name" SelectedValuePath="Id"  HorizontalAlignment="Left" Margin="129,120,0,0" VerticalAlignment="Top" Width="151" Height="22"/>
+        <Label x:Name="lblLicencePlate" Content="Patente" HorizontalAlignment="Left" Margin="87,33,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLicencePlate" HorizontalAlignment="Left" Margin="160,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Height="22"/>
+        <Label x:Name="lblModel" Content="Modelo" HorizontalAlignment="Left" Margin="86,119,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cboBrand" DisplayMemberPath="Name" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="160,75,0,0" VerticalAlignment="Top" Width="161" Height="22" SelectionChanged="CboBrand_SelectionChanged"/>
+        <Label x:Name="lblBrand" Content="Marca" HorizontalAlignment="Left" Margin="87,75,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblYear" Content="Año" HorizontalAlignment="Left" Margin="87,158,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Margin="161,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Height="22"/>
+        <CheckBox x:Name="chkNew" Content="¿Es nuevo?" HorizontalAlignment="Left" Margin="161,240,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTransmission" Content="Transmisión" HorizontalAlignment="Left" Margin="84,270,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbtOption1" Content="Mecanica" HorizontalAlignment="Left" Margin="177,274,0,0" VerticalAlignment="Top" GroupName="transmission"/>
+        <RadioButton x:Name="rbtOption2" Content="Automatica" HorizontalAlignment="Left" Margin="270,274,0,0" VerticalAlignment="Top" GroupName="transmission"/>
+        <Button x:Name="btnSearch" Content="Buscar" HorizontalAlignment="Left" Margin="339,33,0,0" VerticalAlignment="Top" Height="21" Width="60" Click="btnSearch_Click" Foreground="White" Background="#FF050708"/>
+        <Button x:Name="btnDelete" Content="Eliminar" HorizontalAlignment="Left" Margin="182,321,0,0" VerticalAlignment="Top" Height="30" Width="76" Click="btnDelete_Click" Background="#FFC10707" Foreground="White"/>
+        <Button x:Name="btnUpdate" Content="Modificar" HorizontalAlignment="Left" Margin="91,321,0,0" VerticalAlignment="Top" Height="30" Width="76" Click="btnUpdate_Click" Background="#FF1D9592" Foreground="#FFFEFEFE"/>
+        <Button x:Name="btnSave" Content="Guardar" HorizontalAlignment="Left" Margin="279,321,0,0" VerticalAlignment="Top" Height="30" Width="76" Click="btnSave_Click" Background="#FF118F37" Foreground="#FFF7F7F7"/>
+        <Label x:Name="txtAuthor" Content="Matías Solis Bello - Abril 2022" HorizontalAlignment="Left" Margin="373,380,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnList" Content="Abrir Listado" HorizontalAlignment="Left" Margin="438,321,0,0" VerticalAlignment="Top" Width="96" Click="btnList_Click" Height="30" Background="#FFF1DE24" Foreground="White"/>
+        <Label x:Name="lblDate" Content="Fecha" HorizontalAlignment="Left" Margin="86,194,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dtpDate" SelectedDateFormat="Short" HorizontalAlignment="Left" Margin="160,194,0,0" VerticalAlignment="Top" Width="161"/>
+        <ComboBox x:Name="cboModel" IsEnabled="False" DisplayMemberPath="Name" SelectedValuePath="Id"  HorizontalAlignment="Left" Margin="160,120,0,0" VerticalAlignment="Top" Width="161" Height="22"/>
 
     </Grid>
 </Controls:MetroWindow>

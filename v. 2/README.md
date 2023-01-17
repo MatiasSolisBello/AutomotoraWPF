@@ -1,6 +1,7 @@
-# AutomotoraWPF
-:white_check_mark: Repaso de C# con WPF sin DB
+# AutomotoraWPF v.2
 
-IDE: Visual Studio 2022
+* **IDE:** Visual Studio 2017
+* **Base de datos:** SQL Server (Cars.sql)
+* **Proyecto de Inicio:** Automotora
 
-Proyecto Inicial: Automotora
+Solucion / click derecho / Adimistrar paquetes NuGet para la solucion / Restaurar

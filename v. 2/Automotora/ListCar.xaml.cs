@@ -80,11 +80,6 @@ namespace Automotora
 
         }
 
-        private void btnRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            dgCars.ItemsSource = null;
-            dgCars.ItemsSource = this.Collection.cars;
-        }
 
         // Cerrar ventana
         private void btnExit_Click(object sender, RoutedEventArgs e)

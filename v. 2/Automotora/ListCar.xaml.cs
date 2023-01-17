@@ -18,7 +18,18 @@ namespace Automotora
     /// </summary>
     public partial class ListCar
     {
-        private AutomotoraCollection _collection;
+        private AutomotoraCollection _collection = new AutomotoraCollection();
+
+        public static ListCar window = null;
+
+        public static ListCar GetInstance()
+        {
+            if (window == null)
+            {
+                window = new ListCar();
+            }
+            return window;
+        }
 
         public AutomotoraCollection Collection
         {
@@ -29,16 +40,10 @@ namespace Automotora
         public ListCar()
         {
             InitializeComponent();
-        }
-
-        public ListCar(AutomotoraCollection collection)
-        {
-            this.Collection = collection;
-            InitializeComponent();
             dgCars.ItemsSource = this.Collection.ListAll();
 
             // Cargar marcas en comboBox de Filtro
-            cboBrand.ItemsSource = collection.ListBrands();
+            cboBrand.ItemsSource = _collection.ListBrands();
         }
 
         private void txtLicencePlate_KeyUp(object sender, KeyEventArgs e)
@@ -71,6 +76,13 @@ namespace Automotora
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+
+        // Ir a XAML / Click MetroWindow / Propiedades / Rayo / Closing / DobleClick
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            window = null;
         }
     }
 }

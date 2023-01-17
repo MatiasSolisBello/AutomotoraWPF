@@ -28,14 +28,14 @@ namespace Automotora
         // Rediridir a otras ventanas
         private void TileCars_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow(this._collection);
-            main.Show();
+            MainWindow.GetInstance().Show();
+            MainWindow.GetInstance().Activate();
         }
 
         private void TileList_Click(object sender, RoutedEventArgs e)
         {
-            ListCar list = new ListCar(this._collection);
-            list.Show();
+            ListCar.GetInstance().Show();
+            ListCar.GetInstance().Activate();
         }
 
         // Salir de la aplicación

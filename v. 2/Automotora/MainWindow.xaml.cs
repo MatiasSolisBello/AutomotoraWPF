@@ -23,27 +23,27 @@ namespace Automotora
     {
         // Inicializa Coleccion
         private AutomotoraCollection _collection = new AutomotoraCollection();
+
+        public static MainWindow window = null;
+
+        public static MainWindow GetInstance()
+        {
+            if (window == null)
+            {
+                window = new MainWindow();
+            }
+            return window;
+        }
+
+
+        // Llevar los datos de menu -> listado
         public MainWindow()
         {
             InitializeComponent();
 
-            // Carga combobox con datos de Enum Brand y por defecto es 0
-            //cboBrand.ItemsSource = Enum.GetValues(typeof(Brands));
-            //cboBrand.SelectedIndex = 0;
-        }
-
-        // Llevar los datos de menu -> listado
-        public MainWindow(AutomotoraCollection collection)
-        {
-            this._collection = collection;
-            InitializeComponent();
-
             // Carga combobox con datos de Brand y por defecto es 0
-            cboBrand.ItemsSource = collection.ListBrands();
+            cboBrand.ItemsSource = _collection.ListBrands();
             cboBrand.SelectedIndex = 0;
-
-            //cboModel.ItemsSource = collection.ListModelsData();
-            //cboModel.SelectedIndex = 0;
         }
 
 
@@ -253,8 +253,8 @@ namespace Automotora
 
         private void btnList_Click(object sender, RoutedEventArgs e)
         {
-            ListCar list = new ListCar(this._collection);
-            list.Show();
+            ListCar.GetInstance().Show();
+            ListCar.GetInstance().Activate();
         }
 
         private void CboBrand_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -268,6 +268,13 @@ namespace Automotora
                 cboModel.SelectedIndex = 0;
                 cboModel.IsEnabled = true;
             }
+        }
+
+
+        // Ir a XAML / Click MetroWindow / Propiedades / Rayo / Closing / DobleClick
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            window = null;
         }
     }
 }

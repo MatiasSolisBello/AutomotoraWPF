@@ -12,7 +12,7 @@
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="191*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgCars" IsReadOnly="True" Margin="1,139,39,48" Grid.Column="1" AutoGenerateColumns="False">
+        <DataGrid x:Name="dgCars" IsReadOnly="True" Margin="1,139,39,48" Grid.Column="1" AutoGenerateColumns="False" SelectionChanged="DgCars_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding LicencePlate}" ClipboardContentBinding="{x:Null}" Header="Patente"/>
                 <DataGridTextColumn Binding="{Binding Models.Brand.Name}" ClipboardContentBinding="{x:Null}" Header="Marca"/>

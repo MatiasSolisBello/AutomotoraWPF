@@ -44,6 +44,39 @@ namespace Automotora
             // Carga combobox con datos de Brand y por defecto es 0
             cboBrand.ItemsSource = _collection.ListBrands();
             cboBrand.SelectedIndex = 0;
+
+            NotificationCenter.Subscribe("car_selected", chargeCar);
+        }
+
+
+        public void chargeCar(object charge_car)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (charge_car != null)
+                {
+                    Car car = (Car)charge_car;
+                    txtLicencePlate.Text = car.LicencePlate;
+                    cboBrand.SelectedValue = car.Models.Brand.Id;
+
+                    cboModel.ItemsSource = _collection.ListModelsByBrand(car.Models.Brand.Id);
+                    cboModel.SelectedValue = car.Models.Id;
+
+                    txtYear.Text = car.Year.ToString();
+                    chkNew.IsChecked = car.New;
+                    dtpDate.SelectedDate = car.Date;
+
+                    if (car.Transmissions == Transmissions.Automatica)
+                    {
+                        rbtOption2.IsChecked = true;
+                    }
+                    else
+                    {
+                        rbtOption1.IsChecked = true;
+                    }
+
+                }
+            });
         }
 
 
@@ -108,6 +141,7 @@ namespace Automotora
                 if (_collection.SaveCar(car))
                 {
                     MessageBox.Show("Guardado correctamente");
+                    NotificationCenter.Notify("car_changed");
                 }
                 else
                 {
@@ -181,6 +215,7 @@ namespace Automotora
             {
                 MessageBox.Show("Eliminado correctamente");
                 LoadTable();
+                NotificationCenter.Notify("car_changed");
             }
             else
             {
@@ -238,6 +273,7 @@ namespace Automotora
                 if (_collection.UpdateCar(car))
                 {
                     MessageBox.Show("Modificado correctamente");
+                    NotificationCenter.Notify("car_changed");
                 }
                 else
                 {

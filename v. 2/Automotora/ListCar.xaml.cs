@@ -37,6 +37,17 @@ namespace Automotora
             set { _collection = value; }
         }
 
+
+        // Recargar grilla
+        public void ReloadGrill()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                dgCars.ItemsSource = this.Collection.ListAll();
+                cboBrand.ItemsSource = _collection.ListBrands();
+            });
+        }
+
         public ListCar()
         {
             InitializeComponent();
@@ -44,6 +55,9 @@ namespace Automotora
 
             // Cargar marcas en comboBox de Filtro
             cboBrand.ItemsSource = _collection.ListBrands();
+
+            // Nos suscribimos
+            NotificationCenter.Subscribe("car_changed", ReloadGrill);
         }
 
         private void txtLicencePlate_KeyUp(object sender, KeyEventArgs e)
@@ -83,6 +97,16 @@ namespace Automotora
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             window = null;
+        }
+
+        // Notificamos seleccion de fila
+        private void DgCars_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(dgCars.SelectedValue != null)
+            {
+                Car car = (Car)dgCars.SelectedValue;
+                NotificationCenter.Notify("car_selected", car);
+            }
         }
     }
 }

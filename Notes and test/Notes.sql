@@ -72,3 +72,37 @@ where precio >=20.00;
 
 
 -- Borrar registros
+delete from libros where editorial='Planeta';
+
+--Actualizar registros
+update libros set autor='Agustin Laje' where autor='Laje';
+
+-- Valor Null
+select * from libros where precio is null;
+
+
+--Concatenar
+select titulo+'-'+autor+'-'+editorial from libros;
+
+
+--Tipo de dato (fecha y hora)
+if object_id('empleados') is not null
+  drop table empleados;
+
+create table empleados(
+  nombre varchar(20),
+  documento char(8),
+  fechahora datetime,
+  fecha date
+);
+go
+
+-- Seteamos el formato de la fecha para que guarde día, mes y año:
+set dateformat dmy;
+
+insert into empleados values('Ana Gomez','22222222','12-01-1980', '12-01-1980');
+insert into empleados values('Bernardo Huerta','23333333','15-03-81', '15-03-81');
+insert into empleados values('Carla Juarez','24444444','20/05/1983', '20/05/1983');
+insert into empleados values('Daniel Lopez','25555555','2.5.1990', '2.5.1990');
+
+select * from empleados;
